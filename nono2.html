@@ -1,0 +1,183 @@
+<html>
+<body style="background-image:url('hi.jpg'); background-repeat:no-repeat; background-size:cover">
+<center>
+
+    <h1 style="font-family:agency fb"> MEMORY GAME</h1>
+    <h2 style="font-family:agency fb">MATCH PAIRS</h2>
+    <h3 style="font-family:agency fb"> GET SET GO </h3>
+</center>
+<style>
+    .unit {
+        padding: 5px;
+        font-size: 100px;
+        align: center;
+        padding: 40px
+    }
+    
+    td {
+        border: 1px solid black;
+    }
+</style>
+<div style="padding-top:70px">
+    <table align="center" id="tab">
+
+
+        <tr>
+            <td class="unit" id="td-1">
+                <img src="nishtha.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-2">
+                <img src="nishtha2.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-3">
+                <img src="nishtha3.jpg" width="90" height="90">
+
+            </td>
+            <td class="unit" id="td-4">
+                <img src="nishtha1.jpg" width="90" height="90">
+            </td>
+        </tr>
+
+
+
+
+        <tr>
+            <td class="unit" id="td-5">
+                <img src="nishtha7.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-6">
+                <img src="nishtha5.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-7">
+                <img src="nishtha4.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-8">
+                <img src="nishtha4.jpg" width="90" height="90">
+            </td>
+        </tr>
+          <tr>
+            <td class="unit" id="td-9">
+                <img src="nishtha1.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-10">
+                <img src="nishtha6.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-11">
+                <img src="nishtha.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-12">
+                <img src="nishtha2.jpg" width="90" height="90">
+            </td>
+        </tr>
+          <tr>
+            <td class="unit" id="td-13">
+                <img src="nishtha5.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-14">
+                <img src="nishtha3.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-15">
+                <img src="nishtha7.jpg" width="90" height="90">
+            </td>
+            <td class="unit" id="td-16">
+                <img src="nishtha6.jpg" width="90" height="90">
+            </td>
+        </tr>
+
+
+    </table>
+</div>
+<p id="res" style="text-align:center;font-size:100px;font-weight:900;font-family:agency FB; color:black;padding-top:10px"></p>
+<p id="res2" style="text-align:center;font-size:10px;font-weight:900;font-family:agency FB; color:black;padding-top:10px"></p>
+
+<script>
+    const block2 = []
+    let x = 0
+    const block = document.getElementsByTagName('td');
+    setTimeout(function() {
+        for (let i = 0; i < 16; i++) {
+            block[i].children[0].style.opacity = 0;
+        }
+    }, 2000);
+
+    const td1 = document.getElementById('td-1')
+    const td2 = document.getElementById('td-2')
+    const td3 = document.getElementById('td-3')
+    const td4 = document.getElementById('td-4')
+    const td5 = document.getElementById('td-5')
+    const td6 = document.getElementById('td-6')
+    const td7 = document.getElementById('td-7')
+    const td8 = document.getElementById('td-8')
+    const td9 = document.getElementById('td-9')
+    const td10 = document.getElementById('td-10')
+    const td11 = document.getElementById('td-11')
+    const td12 = document.getElementById('td-12')
+    const td13= document.getElementById('td-13')
+    const td14= document.getElementById('td-14')
+    const td15 = document.getElementById('td-15')
+    const td16 = document.getElementById('td-16')
+
+
+    td1.addEventListener('click', check)
+    td2.addEventListener('click', check)
+    td3.addEventListener('click', check)
+    td4.addEventListener('click', check)
+    td5.addEventListener('click', check)
+    td6.addEventListener('click', check)
+    td7.addEventListener('click', check)
+    td8.addEventListener('click', check)
+    td9.addEventListener('click', check)
+    td10.addEventListener('click', check)
+    td11.addEventListener('click', check)
+    td12.addEventListener('click', check)
+    td13.addEventListener('click', check)
+    td14.addEventListener('click', check)
+    td15.addEventListener('click', check) 
+    td16.addEventListener('click', check)      
+    let score = 0
+
+    let secs = 0;
+    let id = setInterval(   function() {
+        secs++; console.log(secs);
+    }, 1000)
+
+    function check() {
+        console.log(this)
+        let elem = document.getElementById(this.id);
+        this.children[0].style.opacity = 100;
+
+        for (let i = 0; i < 16; i++) {
+
+            if (block[i].children[0].style.opacity == 100 && block[i] != this && block[i].correct != true) {
+                if (block[i].children[0].src == this.children[0].src) {
+                    score = score + 1
+                    this.correct = true
+                    block[i].correct = true
+                        // let elem = document.getElementById(this.id);
+                        // elem.parentNode.removeChild(elem);
+                    console.log(block[i])
+                } else {
+                    elem1 = document.getElementById("tab");
+                    elem1.parentNode.removeChild(elem1);
+                    document.getElementById('res').innerHTML = "): YOU LOSE :("
+                }
+            }
+        }
+        for (let i = 0; i < 16; i++) {
+            if (block[i].children[0].style.opacity == 100) {
+                x += 1
+                console.log(x)
+                 if (x == 134) {
+                    clearInterval(id);
+
+                     elem2 = document.getElementById("tab");
+                     elem2.parentNode.removeChild(elem2);
+                     document.getElementById('res').innerHTML = "(: YOU WIN :) <br> Time: " + secs + " seconds"
+                 }
+            }
+        }
+    }
+</script>
+</body>
+
+</html>
